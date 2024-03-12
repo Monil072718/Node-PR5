@@ -1,0 +1,109 @@
+<%-include('../partials/header.ejs')%>
+
+  <div class="container">
+    <h1 class="text-center">Add Movie</h1>
+    <form id="form" action="/add" method="post" onsubmit="return handleForm(this)" enctype="multipart/form-data">
+      <label class="form-lable">
+        Movie Title
+      </label>
+      <input class="form-control" type="text" name="title" />
+      <p class="text-danger" id="titlee"></p>
+
+
+      <label class="form-lable">
+        Description
+      </label>
+      <input class="form-control" type="text" name="description" />
+      <p class="text-danger" id="authorError"></p>
+
+
+      <label class="form-lable">
+        genre
+      </label>
+      <select class="form-select" name="genre">
+        <option value="" disabled selected>
+          genre
+        </option>
+        <option value="action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="romance"> Romance</option>
+      </select>
+      <p class="text-danger" id="booktypeError"></p>
+
+
+      <label class="form-lable">
+        Published Year
+      </label>
+      <input class="form-control" type="number" name="release_year" />
+      <p class="text-danger" id="pyearError"></p>
+      <label class="form-lable">
+        Rating
+      </label>
+      <input class="form-control" type="number" name="rating" />
+      <p class="text-danger" id="stockError"></p>
+      
+      <input type="file" name="file" id="" required>
+
+      <button class="btn btn-primary" type="submit">
+        Add
+      </button>
+
+    </form>
+  </div>
+
+  <%-include('../partials/footer.ejs')%>
+
+    <script>
+      function handleForm(e) {
+        let submit = true;
+        const title = e.title;
+        const description = e.author;
+        const release_year = e.type;
+        const genre = e.published;
+        const rating = e.stock;
+
+        if (title.value === "") {
+          document.getElementById("titlee").innerHTML = "Please enter book title";
+          submit = false;
+        } else {
+          document.getElementById("titlee").innerHTML = "";
+        }
+
+        if (author.value === "") {
+          document.getElementById("authorError").innerHTML = "Please enter book author";
+          submit = false;
+        } else {
+          document.getElementById("authorError").innerHTML = "";
+        }
+
+        if (booktype.value === "") {
+          document.getElementById("booktypeError").innerHTML = "Please select book type";
+          submit = false;
+        } else {
+          document.getElementById("booktypeError").innerHTML = "";
+        }
+
+        if (published.value === "") {
+          document.getElementById("pyearError").innerHTML = "Please enter published year";
+          submit = false;
+        } else {
+          document.getElementById("pyearError").innerHTML = "";
+        }
+
+        if (stock.value === "") {
+          document.getElementById("stockError").innerHTML = "Please enter total stock";
+          submit = false;
+        } else {
+          document.getElementById("stockError").innerHTML = "";
+        }
+
+        if (price.value === "") {
+          document.getElementById("priceError").innerHTML = "Please enter book value";
+          submit = false;
+        } else {
+          document.getElementById("priceError").innerHTML = "";
+        }
+
+        return submit;
+      }
+    </script>
